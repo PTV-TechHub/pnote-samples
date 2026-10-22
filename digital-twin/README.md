@@ -3,29 +3,33 @@
 Các chương trình mẫu của Virtual Leanbot (digitaltwin.pythaverse.space) và hai bảng số liệu so sánh robot thật với robot ảo.
 Có **ba loại**, chạy ở ba nơi khác nhau. Xem cột "Chạy ở đâu" trước khi mở.
 
-## `pnote/`: chạy trong PNote (thư viện `pyLeanbot`)
+## `pnote/`: chạy trong PNote (thư viện `pyLeanbot` của PNote)
 
-Các chương trình này dùng `from pyLeanbot import *` (thư viện có sẵn trong PNote) và `LbMission.beginDigitalTwin(...)`:
-PNote nối với robot ảo qua MQTT, in "Please go to … to START", rồi bạn bấm **START** trên trang Digital Twin
-(digitaltwin.pythaverse.space/experience) để robot ảo chạy.
+Dùng `from pyLeanbot import *` và `LbMission.beginDigitalTwin(<mã bản đồ>)`: PNote nối với robot ảo qua MQTT, in
+"Please go to … to START", rồi bạn bấm **START** trên trang Digital Twin (digitaltwin.pythaverse.space/experience) để robot ảo chạy.
 
-| Tệp | Làm gì | Ghi chú |
-|---|---|---|
-| `pnote/Demo.py` | Bản đồ `SynapseCity.01`: mở kẹp, chạy thẳng 1,2 s, dừng, đóng kẹp | Mẫu ngắn nhất; cùng kiểu với mã Blockly-Python sinh ra ở các bài mô phỏng (khoá 1437 bài 10–12, 1441 bài 15–16, 1489 bài 16–17) |
-| `pnote/msNumberGrid.py` | Bản đồ `msNumberGrid`: 13 vòng "chạy thẳng 1 s, quay 0,5 s" | |
-| `pnote/LeanbotIoT.py` | Ghi rồi đọc thuộc tính `notes` của một asset trên IoT Dashboard (OpenRemote) | Asset demo dùng chung; đổi `ASSET_ID` sang asset của bạn |
-
-Chạy trong PNote: sao chép tệp sang thư mục của bạn rồi mở bằng Terminal (`python Demo.py`), hoặc dán nội dung vào một ô
-notebook. Mỗi lần sửa mã, chạy lại ô rồi bấm START lại trên trang Digital Twin.
-
-## `virtualleanbot/`: chạy trong trình chạy Python của Virtual Leanbot (thư viện `pyLeanbot2` + `SynapseCity`)
-
-Các tệp này dùng `from pyLeanbot2 import *` và `import SynapseCity` (đặt khối ô nhiễm, tính điểm). Hai thư viện này **chỉ có
-trong trình chạy Python của Virtual Leanbot** (digitaltwin.pythaverse.space, chế độ Python), **không có trong PNote**:
-mở tệp, sao chép nội dung và dán vào Virtual Leanbot.
-
-| Tệp | Nhiệm vụ Synapse City |
+| Tệp | Làm gì |
 |---|---|
+| `pnote/Demo.py` | Bản đồ `SynapseCity.01`: mở kẹp, chạy thẳng 1,2 s, dừng, đóng kẹp. Mẫu ngắn nhất, cùng kiểu với mã Blockly-Python sinh ra ở các bài mô phỏng (khoá 1437 bài 10–12, 1441 bài 15–16, 1489 bài 16–17) |
+| `pnote/msNumberGrid.py` | Bản đồ `msNumberGrid`: 13 vòng "chạy thẳng 1 s, quay 0,5 s" |
+
+Hai tệp này là bản cho PNote của `virtualleanbot/Demo.py` và `virtualleanbot/msNumberGrid.py`: chỉ bỏ tham số
+`speedUp=...`, vì `pyLeanbot` trong PNote chỉ nhận mã bản đồ (`beginDigitalTwin(missionId)`; bản gốc báo `TypeError`).
+
+Chạy: dán nội dung vào một ô notebook rồi chạy (đọc trực tiếp từ `samples/` được, không cần sao chép), hoặc trong Terminal
+`python ~/work/samples/digital-twin/pnote/Demo.py`. Mỗi lần sửa mã, chạy lại rồi bấm START lại trên trang Digital Twin.
+
+## `virtualleanbot/`: chạy trong Virtual Leanbot (digitaltwin.pythaverse.space, chế độ Python)
+
+Bản gốc từ thư mục `Demo/` của Virtual Leanbot. Chúng dùng các hàm chỉ có trong trình chạy Python của Virtual Leanbot
+(`pyLeanbot2`, `SynapseCity`, `LbIoT`, `speedUp=`, Serial của trang Simulator), **không chạy được trong PNote**: mở tệp,
+sao chép nội dung và dán vào Virtual Leanbot.
+
+| Tệp | Nội dung |
+|---|---|
+| `virtualleanbot/Demo.py`, `virtualleanbot/msNumberGrid.py` | Bản gốc của hai mẫu trong `pnote/` (có `speedUp`) |
+| `virtualleanbot/LeanbotIoT.py` | Ghi rồi đọc thuộc tính `notes` của một asset trên IoT Dashboard (OpenRemote) bằng `LbIoT`; asset demo dùng chung, đổi `ASSET_ID` sang asset của bạn |
+| `virtualleanbot/SerialEcho.py` | Kiểu Arduino (`setup()`/`loop()`): nhắc lại mọi dòng gõ vào Serial Monitor của trang Simulator |
 | `virtualleanbot/FollowLine.py` | Dò line quanh viền bản đồ Synapse City rồi về chỗ cũ |
 | `virtualleanbot/Containment.py` | Nhiệm vụ 1 *Containment*: đẩy khối xanh lá ở B1 vào vùng chứa B |
 | `virtualleanbot/Neutralize.py` | Nhiệm vụ 2 *Neutralizer*: lấy khối trung hoà ở S3, rồi xử lý khối ô nhiễm xanh dương ở E2 |
@@ -34,7 +38,6 @@ mở tệp, sao chép nội dung và dán vào Virtual Leanbot.
 | `virtualleanbot/ColorDemo.py` | Đọc màu một khối ngẫu nhiên ở E4 (không chạm khối), rồi thu gom hoặc trung hoà tuỳ màu |
 | `virtualleanbot/RandomLayout.py` | Đặt khối ngẫu nhiên theo cấp (EXPLORER 4, CREATOR 5, INNOVATOR 6, MASTER 7 khối) và in bố cục để dùng lại |
 | `virtualleanbot/TestCollision.py` | Kiểm tra `testCollision()` khi khối chạm robot (dành cho giáo viên / kỹ thuật) |
-| `virtualleanbot/SerialEcho.py` | Kiểu Arduino (`setup()`/`loop()`, `from pyLeanbot import *`): nhắc lại mọi dòng gõ vào Serial Monitor của trang Simulator |
 
 ## `blockly/`: tệp khối lệnh (`.bduino`, `.xml`)
 
@@ -75,5 +78,5 @@ digitaltwin.pythaverse.space/Demo/), `digital-twins/client/public/LB-blockly-pyt
 `digital-twins/docs/leanbot-physical-vs-virtual.csv`, `digital-twins/docs/leanbot-3-units.csv`.
 
 Thay đổi duy nhất: trong `leanbot-3-units.csv`, tên cột theo số hiệu của 3 robot thử nghiệm được đổi thành `robot1`,
-`robot2`, `robot3` (số liệu giữ nguyên). Các tệp trong `pnote/` và `virtualleanbot/` được xếp lại thư mục theo nơi chạy
-(gốc: `Demo/`, `Demo/SynapseCity/`, `Demo/Test/`; `SerialEcho.py` và `TestCollision.py` ở `Demo/Test/`).
+`robot2`, `robot3` (số liệu giữ nguyên). Các tệp `.py` được xếp lại thư mục theo nơi chạy (gốc: `Demo/`, `Demo/SynapseCity/`,
+`Demo/Test/`), và `pnote/Demo.py`, `pnote/msNumberGrid.py` là bản đã bỏ `speedUp` (ghi chú ở dòng 2 của mỗi tệp).

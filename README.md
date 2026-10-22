@@ -9,10 +9,10 @@ chạy và đọc dữ liệu được, nhưng không sửa hay lưu đè đư�
 | Thư mục | Nội dung | Số tệp |
 |---|---|---|
 | [`leanbot-basic/`](leanbot-basic/README.md) | Bộ dữ liệu màu "Indoor with Normal Lighting 1–3" (JSON), mã huấn luyện cây quyết định `dtree.py`, mã Arduino đo màu, notebook bắt đầu | 9 |
-| [`digital-twin/`](digital-twin/README.md) | Chương trình mẫu cho Virtual Leanbot / Digital Twin: chạy trong PNote (`pyLeanbot`), trong trình chạy Python của Virtual Leanbot (`pyLeanbot2`), tệp Blockly `.bduino`, 2 bảng số liệu đo | 24 |
+| [`digital-twin/`](digital-twin/README.md) | Chương trình mẫu Virtual Leanbot / Digital Twin: 2 mẫu chạy trong PNote, 12 mẫu cho chế độ Python của Virtual Leanbot, 9 tệp khối lệnh, 2 bảng số liệu đo | 26 |
 | [`synapse-city/`](synapse-city/README.md) | Mã mẫu Synapse City (AI ROC 2026) theo cấp: tiểu học (Blockly), THCS và THPT (Arduino `.ino`, `dtree.py`) | 49 |
 
-Tổng: 84 tệp (kể cả các README và notebook), khoảng 0,75 MB. Số tệp tính cả README của từng thư mục.
+Tổng: 86 tệp (kể cả các README và notebook), khoảng 0,75 MB. Số tệp tính cả README của từng thư mục.
 
 ## Dùng trong PNote
 
@@ -34,7 +34,7 @@ print(len(df), "mẫu"); print(df["objColor"].value_counts())
 1. Mở `samples/sao-chep-vao-thu-muc-cua-toi.ipynb` và bấm **Run → Run All Cells**. Các tệp được chép sang
    `mau-cua-toi/` ở thư mục gốc của bạn; tệp bạn đã có sẵn thì **không bị ghi đè**.
 2. Trong thanh tệp bên trái: chuột phải vào tệp hoặc thư mục → **Copy**, quay về thư mục của bạn → chuột phải → **Paste**.
-3. Trong Terminal: `cp -rn ~/work/samples/leanbot-basic ~/work/`
+3. Trong Terminal: `cp -r --update=none ~/work/samples/leanbot-basic ~/work/` (không ghi đè tệp đã có)
 
 Notebook mở trong `samples/` vẫn **chạy được**, nhưng không lưu được (thư mục chỉ đọc). Muốn giữ kết quả, hãy sao chép trước.
 

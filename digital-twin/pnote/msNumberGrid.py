@@ -1,12 +1,12 @@
 from pyLeanbot import *
+# PNote version (Pythaverse2026#652): same as ../virtualleanbot/msNumberGrid.py without speedUp, which PNote's pyLeanbot does not accept.
 
 MISSION = 'msNumberGrid'
-SPEED_UP = 1
 TOTAL_LAPS = 13
 
 Leanbot.begin()
 print('Starting mission:', MISSION)
-LbMission.beginDigitalTwin(MISSION, speedUp=SPEED_UP)
+LbMission.beginDigitalTwin(MISSION)   # PNote's pyLeanbot takes only the mission id (no speedUp)
 
 for lap in range(1, TOTAL_LAPS + 1):
     print('Lap', lap, 'of', TOTAL_LAPS)

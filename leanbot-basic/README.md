@@ -36,7 +36,7 @@ Chạy `dtree.py` (nó đọc `*.json` ở thư mục hiện tại và **ghi** `
 
 ```python
 # 1. sao chép một lần (hoặc chạy samples/sao-chep-vao-thu-muc-cua-toi.ipynb)
-!cp -rn ~/work/samples/leanbot-basic ~/work/
+!cp -r --update=none ~/work/samples/leanbot-basic ~/work/
 # 2. chạy trong thư mục dữ liệu
 %cd ~/work/leanbot-basic/data
 %run ../code/dtree.py
