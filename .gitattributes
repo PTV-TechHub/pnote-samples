@@ -1,0 +1,8 @@
+# Published to PNote: everything except these (sync-samples.sh uses `git archive`, which honours export-ignore)
+.github export-ignore
+tools export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+CHANGELOG.md export-ignore
+# keep the source files byte-identical to their origin (some use CRLF)
+* -text
