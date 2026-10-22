@@ -1,0 +1,105 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="iotCounterVar">iotCounter</variable>
+  </variables>
+  <block type="leanbot_when_started" x="100" y="50">
+    <next>
+      <block type="lb_mission_begin_digital_twin">
+        <value name="missionId">
+          <block type="text">
+            <field name="TEXT">msNumberGrid</field>
+          </block>
+        </value>
+        <statement name="BODY">
+          <block type="test_variables_initialize">
+            <mutation scope="LOCAL" typed="true"></mutation>
+            <field name="SCOPE">LOCAL</field>
+            <field name="VAR" id="iotCounterVar">iotCounter</field>
+            <field name="TYPE">int</field>
+            <value name="VALUE">
+              <block type="math_number">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_repeat_ext">
+                <value name="TIMES">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="test_variables_local_set">
+                    <field name="VAR" id="iotCounterVar">iotCounter</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="test_variables_local_get">
+                            <field name="VAR" id="iotCounterVar">iotCounter</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lb_iot_write">
+                        <value name="Asset">
+                          <block type="text">
+                            <field name="TEXT">33khwmcNaidrPJ2oZpcgde</field>
+                          </block>
+                        </value>
+                        <value name="Attribute">
+                          <block type="text">
+                            <field name="TEXT">notes</field>
+                          </block>
+                        </value>
+                        <value name="Value">
+                          <block type="text_join">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="text">
+                                <field name="TEXT">Hello </field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="test_variables_local_get">
+                                <field name="VAR" id="iotCounterVar">iotCounter</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_print">
+                            <value name="TEXT">
+                              <block type="lb_iot_read">
+                                <value name="Asset">
+                                  <block type="text">
+                                    <field name="TEXT">33khwmcNaidrPJ2oZpcgde</field>
+                                  </block>
+                                </value>
+                                <value name="Attribute">
+                                  <block type="text">
+                                    <field name="TEXT">notes</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>

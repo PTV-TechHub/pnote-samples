@@ -1,0 +1,318 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable type="int" id="2tJ#I~SS#gGri[o?iZ3$">target</variable>
+    <variable type="int" id="O2vIYR7hodOea#.TiJu{">line</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="QbIfR/LPV.$|bPg3`rjv" x="-2162" y="-1438">
+    <field name="NAME">followLine</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="vars_set_int" id="Mn3bMrd!~+zj36;jD[Hy">
+        <field name="VAR_SET_INT" id="2tJ#I~SS#gGri[o?iZ3$" variabletype="int">target</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="x0(Sk.MPsysm-h)j07I+">
+            <field name="OP">ADD</field>
+            <value name="A">
+              <shadow type="math_number" id="Mb*Ibf.Luw#PIYPy+S;U">
+                <field name="NUM">1</field>
+              </shadow>
+              <block type="LbMotion.approxDistance" id="v9+680T}pMIz3Wpt|pe*">
+                <field name="UnitDistance">mm</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="vY$B}nR=_aeB(Ww$e8~S">
+                <field name="NUM">1000</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="YJR_kt,yiA6chYLj,fn}">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="LbIRLine.isBlackDetected_vi" id="4/|d*oyAy.RWQwPs]2yF"></block>
+            </value>
+            <statement name="DO">
+              <block type="controls_repeat" id="CA,w7-QM7BScvG$W4{*.">
+                <field name="TIMES">10</field>
+                <statement name="DO">
+                  <block type="LbIRLine.read_vi" id="z!eUqkXsRC*eYU/Tuj7b">
+                    <next>
+                      <block type="vars_set_int" id="Gja7eT~cmM[ha|sxqbtr">
+                        <field name="VAR_SET_INT" id="O2vIYR7hodOea#.TiJu{" variabletype="int">line</field>
+                        <value name="VALUE">
+                          <block type="LbIRLine.value_vi" id="/y]t6:6|v6rtn+~ZBCVt"></block>
+                        </value>
+                        <next>
+                          <block type="LbIRLine.displayOnRGB" id=";xjfg@jeJi{:?1QRt~@?">
+                            <value name="RGBColor">
+                              <shadow type="LbRGB.colour_picker" id="^+|y,Kxm%f-bcuj$z;ua">
+                                <field name="Color">#00ff00</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="controls_switch" id="z}gqR~=L?axLNO;tJvjT">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" casebreak="12" default="1"></mutation>
+                                <field name="SWVAR" id="O2vIYR7hodOea#.TiJu{" variabletype="int">line</field>
+                                <value name="CASE0">
+                                  <block type="LbIRLine.state_vi" id="@iZu1?cfJAp,JYQg7_M5">
+                                    <field name="state0"></field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3"></field>
+                                  </block>
+                                </value>
+                                <value name="CASE1">
+                                  <block type="LbIRLine.state_vi" id="JWEzq4p|X%I{`)rbAuzT">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3"></field>
+                                  </block>
+                                </value>
+                                <value name="CASE2">
+                                  <block type="LbIRLine.state_vi" id="H20ItXZpL*0A%sV!sw4Y">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#ffffff</field>
+                                  </block>
+                                </value>
+                                <value name="CASE3">
+                                  <block type="LbIRLine.state_vi" id="M,i-{[VU{$!fF}l$YYk9">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#ffffff</field>
+                                  </block>
+                                </value>
+                                <statement name="DO3">
+                                  <block type="LbMotion.run" id="l6-MJz!F%$_G}#+}1h7H">
+                                    <field name="MotionType">Run</field>
+                                    <field name="UnitSpeed">sps</field>
+                                    <value name="Left">
+                                      <shadow type="math_number" id="8At4f)rubR7q2SIhx.W$">
+                                        <field name="NUM">190</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="Right">
+                                      <shadow type="math_number" id="m5m,nttu(Dh:I%U[;L:~">
+                                        <field name="NUM">1500</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <value name="CASE4">
+                                  <block type="LbIRLine.state_vi" id="BRA{VxGAEa#*Z`5Z:UK5">
+                                    <field name="state0"></field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3">#ffffff</field>
+                                  </block>
+                                </value>
+                                <value name="CASE5">
+                                  <block type="LbIRLine.state_vi" id="=%T=_yDq-;bjD%5l}4y_">
+                                    <field name="state0">#ffffff</field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <value name="CASE6">
+                                  <block type="LbIRLine.state_vi" id="Hbb@o+n#_k;|-,,FgIBJ">
+                                    <field name="state0">#ffffff</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <value name="CASE7">
+                                  <block type="LbIRLine.state_vi" id="OyU#/X4}m7J=MCrwy^%(">
+                                    <field name="state0">#ffffff</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <statement name="DO7">
+                                  <block type="LbMotion.run" id="7#:4qZtC/~l*~L*FP@%b">
+                                    <field name="MotionType">Run</field>
+                                    <field name="UnitSpeed">sps</field>
+                                    <value name="Left">
+                                      <shadow type="math_number" id="{A[?(HhLPB#%-K#5G!a]">
+                                        <field name="NUM">1500</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="Right">
+                                      <shadow type="math_number" id="i+2l|*LifMg)A*0d@AxV">
+                                        <field name="NUM">190</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <value name="CASE8">
+                                  <block type="LbIRLine.state_vi" id="WE?@ccoC6t~%tZ{{.dp+">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <value name="CASE9">
+                                  <block type="LbIRLine.state_vi" id="ljPtqH1Hy,B1lo0np(RL">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <value name="CASE10">
+                                  <block type="LbIRLine.state_vi" id="+s,-j$1q9bj=pt,w;|xK">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <value name="CASE11">
+                                  <block type="LbIRLine.state_vi" id="a)KylN@RDP~nfg0JfC,y">
+                                    <field name="state0">#000000</field>
+                                    <field name="state1">#ffffff</field>
+                                    <field name="state2">#000000</field>
+                                    <field name="state3">#ffffff</field>
+                                  </block>
+                                </value>
+                                <value name="CASE12">
+                                  <block type="LbIRLine.state_vi" id="Aqw8ql+HKIg+jg#c;bBD">
+                                    <field name="state0">#ffffff</field>
+                                    <field name="state1">#000000</field>
+                                    <field name="state2">#ffffff</field>
+                                    <field name="state3">#000000</field>
+                                  </block>
+                                </value>
+                                <statement name="DEFAULT">
+                                  <block type="LbMotion.run" id="U^)+*%|G5ropkJ3*%;MU">
+                                    <field name="MotionType">Run</field>
+                                    <field name="UnitSpeed">sps</field>
+                                    <value name="Left">
+                                      <shadow type="math_number" id="3#fKBWd]C.6k-`BHf:~/">
+                                        <field name="NUM">1500</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="Right">
+                                      <shadow type="math_number" id="JrTfc*|Gq1q4y/6tV^a`">
+                                        <field name="NUM">1500</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="controls_if" id="dcvfh8W?^pHuZ4ff#:Ws">
+                                    <value name="IF0">
+                                      <block type="LbIRLine.isBlackDetected_vi" id="}wf[y~;%hr`9#9o/,RQN"></block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="controls_flow_statements" id="B@lj@N~9Zb8#H:4?uOn8">
+                                        <field name="FLOW">BREAK</field>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="LbMotion.waitDistanceMm" id="KI#c8`~wUXCSq)Tj^G?^">
+                                        <field name="UnitDistance">mm</field>
+                                        <value name="distanceMm">
+                                          <shadow type="math_number" id="ps8+T%!MO`T8SI0_V}X.">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="c{zd^Uts`B:w}3#DgnVS">
+                    <value name="IF0">
+                      <block type="logic_compare" id="}@{*9TTq[s7pv3r+d`#7">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="LbMotion.approxDistance" id="h$:Hl?+cDoxX-q7#l/_@">
+                            <field name="UnitDistance">mm</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="vars_get_int" id="eBdB`zPLh06J605zpO:$">
+                            <field name="VAR_GET_INT" id="2tJ#I~SS#gGri[o?iZ3$" variabletype="int">target</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="MN7B#W{!pH3;X_)jI/hq">
+                        <value name="IF0">
+                          <block type="logic_compare" id="^qna]p)FG9-+TB~X*+$P">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="LbIRLine.value_vi" id=":9zD:SKUJDR^eaj[~aa?"></block>
+                            </value>
+                            <value name="B">
+                              <block type="LbIRLine.state_vi" id="euE@Qz^1vR#CwMpaU~]R">
+                                <field name="state0"></field>
+                                <field name="state1">#000000</field>
+                                <field name="state2">#000000</field>
+                                <field name="state3"></field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="controls_flow_statements" id="KN{:~80@cR4/pUMPubs(">
+                            <field name="FLOW">BREAK</field>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="Leanbot.whenStarted" id="%QxTXrS~Tte)6_+O0gvp" x="-1263" y="-1313">
+    <next>
+      <block type="Leanbot.section_vi" id="Bi1vWq]5+:${6Ag9/[Z;">
+        <field name="commentString">Do manual calibration with black/white line</field>
+        <statement name="Body">
+          <block type="LbIRLine.doManualCalibration_vi" id="UfJUOs4{J?.te{epi^5k">
+            <field name="touchX">TB1A</field>
+          </block>
+        </statement>
+        <next>
+          <block type="LbMission.beginByTeacher_end_vi" id="~o1%|G]c!|YT7yY#U0[9">
+            <field name="comboTouch">TB1A + TB1B</field>
+            <statement name="Body">
+              <block type="Leanbot.section_vi" id="C~8U1?6Iv#/A22F`z1F|">
+                <field name="commentString">Follow line to the end then stops</field>
+                <statement name="Body">
+                  <block type="procedures_callnoreturn" id="O,YeDqe9[!F]J.3Qf]ED">
+                    <mutation name="followLine"></mutation>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

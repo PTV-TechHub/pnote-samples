@@ -1,0 +1,267 @@
+<xml xmlns='https://developers.google.com/blockly/xml'>
+  <variables>
+    <variable id='followLineValue'>lineValue</variable>
+  </variables>
+  <block type='procedures_defnoreturn' x='40' y='40'>
+    <field name='NAME'>runFollowLine</field>
+    <statement name='STACK'>
+      <block type='lb_irline_read'>
+        <next>
+          <block type='variables_set'>
+            <field name='VAR' id='followLineValue'>lineValue</field>
+            <value name='VALUE'>
+              <block type='lb_irline_value'/>
+            </value>
+            <next>
+              <block type='controls_if'>
+                <mutation elseif='5' else='1'/>
+                <value name='IF0'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>4</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO0'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>1000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <value name='IF1'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>2</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO1'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>1000</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <value name='IF2'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>12</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO2'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>0</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <value name='IF3'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>3</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO3'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>0</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <value name='IF4'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>8</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO4'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>-1000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>1000</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <value name='IF5'>
+                  <block type='logic_compare'>
+                    <field name='OP'>EQ</field>
+                    <value name='A'>
+                      <block type='variables_get'>
+                        <field name='VAR' id='followLineValue'>lineValue</field>
+                      </block>
+                    </value>
+                    <value name='B'>
+                      <block type='math_number'><field name='NUM'>1</field></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name='DO5'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>1000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>-1000</field></block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name='ELSE'>
+                  <block type='lb_motion_run'>
+                    <field name='UnitSpeed'>sps</field>
+                    <value name='Left'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                    <value name='Right'>
+                      <block type='math_number'><field name='NUM'>2000</field></block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type='leanbot_when_started' x='520' y='40'>
+    <next>
+      <block type='lb_irline_do_manual_calibration'>
+        <field name='touchX'>TB1A</field>
+        <next>
+          <block type='lb_mission_begin_digital_twin'>
+            <value name='missionId'>
+              <block type='text'><field name='TEXT'>SynapseCity.01</field></block>
+            </value>
+            <statement name='BODY'>
+              <block type='lb_motion_run'>
+                <field name='UnitSpeed'>sps</field>
+                <value name='Left'>
+                  <block type='math_number'><field name='NUM'>2000</field></block>
+                </value>
+                <value name='Right'>
+                  <block type='math_number'><field name='NUM'>2000</field></block>
+                </value>
+                <next>
+                  <block type='lb_motion_wait_distance'>
+                    <field name='UnitDistance'>mm</field>
+                    <value name='distanceMm'>
+                      <block type='math_number'><field name='NUM'>90</field></block>
+                    </value>
+                    <next>
+                      <block type='lb_motion_stop'>
+                        <next>
+                          <block type='lb_motion_run'>
+                            <field name='UnitSpeed'>sps</field>
+                            <value name='Left'>
+                              <block type='math_number'><field name='NUM'>-2000</field></block>
+                            </value>
+                            <value name='Right'>
+                              <block type='math_number'><field name='NUM'>2000</field></block>
+                            </value>
+                            <next>
+                              <block type='lb_motion_wait_rotation'>
+                                <value name='rotationDeg'>
+                                  <block type='math_number'><field name='NUM'>23</field></block>
+                                </value>
+                                <next>
+                                  <block type='lb_motion_stop'>
+                                    <next>
+                                      <block type='lb_irline_read'>
+                                        <next>
+                                          <block type='controls_whileUntil'>
+                                            <field name='MODE'>UNTIL</field>
+                                            <value name='BOOL'>
+                                              <block type='logic_compare'>
+                                                <field name='OP'>EQ</field>
+                                                <value name='A'>
+                                                  <block type='lb_irline_value'/>
+                                                </value>
+                                                <value name='B'>
+                                                  <block type='math_number'><field name='NUM'>15</field></block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name='DO'>
+                                              <block type='procedures_callnoreturn'>
+                                                <mutation name='runFollowLine'/>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type='lb_motion_stop'/>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

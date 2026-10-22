@@ -1,0 +1,334 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="variables-TargetSpeed" type="int">TargetSpeed</variable>
+    <variable id="variables-DriveSpeed" type="int">DriveSpeed</variable>
+    <variable id="variables-M1_Zone" type="String">M1_Zone</variable>
+    <variable id="variables-CurrentZone" type="String">CurrentZone</variable>
+    <variable id="variables-M1_HasPollution" type="bool">M1_HasPollution</variable>
+    <variable id="variables-HasPollution" type="bool">HasPollution</variable>
+    <variable id="variables-TargetRatio" type="float">TargetRatio</variable>
+    <variable id="variables-CurrentRatio" type="float">CurrentRatio</variable>
+    <variable id="variables-Input" type="">Input</variable>
+    <variable id="variables-Offset" type="">Offset</variable>
+  </variables>
+  <block type="Leanbot.whenStarted" id="variables-demo-1" x="40" y="40">
+    <comment pinned="false" h="80" w="440">Press RUN. Expected: 30 / A / True / 1.25; function results 7 / 10.</comment>
+    <next>
+      <block type="procedures_callnoreturn" id="variables-demo-2">
+        <mutation name="InitializeVariables" />
+        <next>
+          <block type="procedures_callnoreturn" id="variables-demo-3">
+            <mutation name="LoadMission1" />
+            <next>
+              <block type="text_print" id="variables-demo-7">
+                <value name="TEXT">
+                  <block type="text_join" id="variables-demo-5">
+                    <mutation items="2" />
+                    <value name="ADD0">
+                      <block type="text" id="variables-demo-6">
+                        <field name="TEXT">Typed DriveSpeed=</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="vars_get_int" id="variables-demo-4">
+                        <field name="VAR_GET_INT" id="variables-DriveSpeed" variabletype="int">DriveSpeed</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="text_print" id="variables-demo-11">
+                    <value name="TEXT">
+                      <block type="text_join" id="variables-demo-9">
+                        <mutation items="2" />
+                        <value name="ADD0">
+                          <block type="text" id="variables-demo-10">
+                            <field name="TEXT">Typed CurrentZone=</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="vars_get_string" id="variables-demo-8">
+                            <field name="VAR_GET_STRING" id="variables-CurrentZone" variabletype="String">CurrentZone</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="text_print" id="variables-demo-15">
+                        <value name="TEXT">
+                          <block type="text_join" id="variables-demo-13">
+                            <mutation items="2" />
+                            <value name="ADD0">
+                              <block type="text" id="variables-demo-14">
+                                <field name="TEXT">Typed HasPollution=</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="vars_get_boolean" id="variables-demo-12">
+                                <field name="VAR_GET_BOOLEAN" id="variables-HasPollution" variabletype="bool">HasPollution</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="text_print" id="variables-demo-19">
+                            <value name="TEXT">
+                              <block type="text_join" id="variables-demo-17">
+                                <mutation items="2" />
+                                <value name="ADD0">
+                                  <block type="text" id="variables-demo-18">
+                                    <field name="TEXT">Typed float CurrentRatio=</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="vars_get_float" id="variables-demo-16">
+                                    <field name="VAR_GET_FLOAT" id="variables-CurrentRatio" variabletype="float">CurrentRatio</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="text_print" id="variables-demo-56">
+                                <value name="TEXT">
+                                  <block type="text_join" id="variables-demo-54">
+                                    <mutation items="2" />
+                                    <value name="ADD0">
+                                      <block type="text" id="variables-demo-55">
+                                        <field name="TEXT">WithLocalOffset(5)=</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="procedures_callreturn" id="variables-demo-53">
+                                        <mutation name="WithLocalOffset">
+                                          <arg name="Input" />
+                                        </mutation>
+                                        <value name="ARG0">
+                                          <block type="math_number" id="variables-demo-52">
+                                            <field name="NUM">5</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="text_print" id="variables-demo-61">
+                                    <value name="TEXT">
+                                      <block type="text_join" id="variables-demo-59">
+                                        <mutation items="2" />
+                                        <value name="ADD0">
+                                          <block type="text" id="variables-demo-60">
+                                            <field name="TEXT">WithLocalOffset(8)=</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="procedures_callreturn" id="variables-demo-58">
+                                            <mutation name="WithLocalOffset">
+                                              <arg name="Input" />
+                                            </mutation>
+                                            <value name="ARG0">
+                                              <block type="math_number" id="variables-demo-57">
+                                                <field name="NUM">8</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="text_print" id="variables-demo-66">
+                                        <value name="TEXT">
+                                          <block type="text" id="variables-demo-67">
+                                            <field name="TEXT">Variables demo: done</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="procedures_defnoreturn" id="variables-demo-84" x="600" y="40">
+    <field name="NAME">InitializeVariables</field>
+    <statement name="STACK">
+      <block type="vars_set_int" id="variables-demo-69">
+        <field name="VAR_SET_INT" id="variables-TargetSpeed" variabletype="int">TargetSpeed</field>
+        <value name="VALUE">
+          <block type="math_number" id="variables-demo-68">
+            <field name="NUM">30</field>
+          </block>
+        </value>
+        <next>
+          <block type="vars_set_int" id="variables-demo-71">
+            <field name="VAR_SET_INT" id="variables-DriveSpeed" variabletype="int">DriveSpeed</field>
+            <value name="VALUE">
+              <block type="math_number" id="variables-demo-70">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="vars_set_string" id="variables-demo-73">
+                <field name="VAR_SET_STRING" id="variables-M1_Zone" variabletype="String">M1_Zone</field>
+                <value name="VALUE">
+                  <block type="text" id="variables-demo-72">
+                    <field name="TEXT">A</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="vars_set_string" id="variables-demo-75">
+                    <field name="VAR_SET_STRING" id="variables-CurrentZone" variabletype="String">CurrentZone</field>
+                    <value name="VALUE">
+                      <block type="text" id="variables-demo-74">
+                        <field name="TEXT" />
+                      </block>
+                    </value>
+                    <next>
+                      <block type="vars_set_boolean" id="variables-demo-77">
+                        <field name="VAR_SET_BOOLEAN" id="variables-M1_HasPollution" variabletype="bool">M1_HasPollution</field>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="variables-demo-76">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="vars_set_boolean" id="variables-demo-79">
+                            <field name="VAR_SET_BOOLEAN" id="variables-HasPollution" variabletype="bool">HasPollution</field>
+                            <value name="VALUE">
+                              <block type="logic_boolean" id="variables-demo-78">
+                                <field name="BOOL">FALSE</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="vars_set_float" id="variables-demo-81">
+                                <field name="VAR_SET_FLOAT" id="variables-TargetRatio" variabletype="float">TargetRatio</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="variables-demo-80">
+                                    <field name="NUM">1.25</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="vars_set_float" id="variables-demo-83">
+                                    <field name="VAR_SET_FLOAT" id="variables-CurrentRatio" variabletype="float">CurrentRatio</field>
+                                    <value name="VALUE">
+                                      <block type="math_number" id="variables-demo-82">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="variables-demo-93" x="600" y="650">
+    <field name="NAME">LoadMission1</field>
+    <comment pinned="false" h="80" w="360">Typed variables are shared across functions.</comment>
+    <statement name="STACK">
+      <block type="vars_set_int" id="variables-demo-86">
+        <field name="VAR_SET_INT" id="variables-DriveSpeed" variabletype="int">DriveSpeed</field>
+        <value name="VALUE">
+          <block type="vars_get_int" id="variables-demo-85">
+            <field name="VAR_GET_INT" id="variables-TargetSpeed" variabletype="int">TargetSpeed</field>
+          </block>
+        </value>
+        <next>
+          <block type="vars_set_string" id="variables-demo-88">
+            <field name="VAR_SET_STRING" id="variables-CurrentZone" variabletype="String">CurrentZone</field>
+            <value name="VALUE">
+              <block type="vars_get_string" id="variables-demo-87">
+                <field name="VAR_GET_STRING" id="variables-M1_Zone" variabletype="String">M1_Zone</field>
+              </block>
+            </value>
+            <next>
+              <block type="vars_set_boolean" id="variables-demo-90">
+                <field name="VAR_SET_BOOLEAN" id="variables-HasPollution" variabletype="bool">HasPollution</field>
+                <value name="VALUE">
+                  <block type="vars_get_boolean" id="variables-demo-89">
+                    <field name="VAR_GET_BOOLEAN" id="variables-M1_HasPollution" variabletype="bool">M1_HasPollution</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="vars_set_float" id="variables-demo-92">
+                    <field name="VAR_SET_FLOAT" id="variables-CurrentRatio" variabletype="float">CurrentRatio</field>
+                    <value name="VALUE">
+                      <block type="vars_get_float" id="variables-demo-91">
+                        <field name="VAR_GET_FLOAT" id="variables-TargetRatio" variabletype="float">TargetRatio</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="variables-demo-131" x="1150" y="40">
+    <mutation>
+      <arg name="Input" varid="variables-Input" />
+    </mutation>
+    <field name="NAME">WithLocalOffset</field>
+    <comment pinned="false" h="80" w="360">Input is a parameter; Offset is local to this function.</comment>
+    <statement name="STACK">
+      <block type="vars_initialize_local" id="variables-demo-127">
+        <field name="VAR_SET_INT" id="variables-Offset" variabletype="">Offset</field>
+        <field name="VAR_TYPE">int</field>
+        <value name="VALUE">
+          <block type="math_number" id="variables-demo-126">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="vars_set_int_local" id="variables-demo-set-Input">
+            <field name="VAR_SET_INT" id="variables-Input" variabletype="">Input</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="variables-demo-130">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <block type="vars_get_int_local" id="variables-demo-128">
+                    <field name="VAR_GET_INT" id="variables-Input" variabletype="">Input</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="vars_get_int_local" id="variables-demo-129">
+                    <field name="VAR_GET_INT" id="variables-Offset" variabletype="">Offset</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="vars_get_int_local" id="variables-demo-return-Input">
+        <field name="VAR_GET_INT" id="variables-Input" variabletype="">Input</field>
+      </block>
+    </value>
+  </block>
+</xml>
