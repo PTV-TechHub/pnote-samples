@@ -1,0 +1,742 @@
+<xml xmlns='https://developers.google.com/blockly/xml'>
+  <variables>
+    <variable id='v_speed'>speed</variable>
+    <variable id='v_distanceMm'>distanceMm</variable>
+    <variable id='v_deg'>deg</variable>
+    <variable id='v_junctionCount'>junctionCount</variable>
+    <variable id='v_targetMm'>targetMm</variable>
+    <variable id='v_lineValue'>lineValue</variable>
+  </variables>
+  <block type='leanbot_when_started' x='40' y='230'>
+    <comment pinned='false' h='210' w='340'>Leanbot collect Red pollution at F4
+  Start
+  - Leanbot at CRL
+  - Pollution: Red at F4
+  Leanbot steps
+  - Follow line to F4
+  - Pick up Pollution at F4
+  - Follow line to CRL
+  - Drop Pollution into CRL
+  - Mission end (Leanbot stops at CRL)</comment>
+    <next>
+      <block type='variables_set'>
+        <field name='VAR' id='v_speed'>speed</field>
+        <value name='VALUE'>
+          <block type='math_number'><field name='NUM'>2000</field></block>
+        </value>
+        <next>
+          <block type='procedures_callnoreturn'>
+            <mutation name='setupSynapseCity'></mutation>
+            <next>
+              <block type='lb_mission_begin_digital_twin'>
+                <value name='missionId'>
+                  <block type='text'><field name='TEXT'>SynapseCity.01</field></block>
+                </value>
+                <statement name='BODY'>
+                  <block type='procedures_callnoreturn'>
+                    <mutation name='FromCRLtoF4'></mutation>
+                    <next>
+                      <block type='procedures_callnoreturn'>
+                        <mutation name='PickupPollutionF4'></mutation>
+                        <next>
+                          <block type='procedures_callnoreturn'>
+                            <mutation name='FromF4toCRL'></mutation>
+                            <next>
+                              <block type='procedures_callnoreturn'>
+                                <mutation name='DropPollutionCRL'></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type='procedures_defnoreturn' x='40' y='40'>
+    <field name='NAME'>setupSynapseCity</field>
+    <comment pinned='false' h='60' w='280'>Place Leanbot and the blocks on the field</comment>
+    <statement name='STACK'>
+      <block type='sc_set_leanbot'>
+        <field name='X'>268</field>
+        <field name='Y'>-268</field>
+        <field name='RZ'>135</field>
+        <next>
+          <block type='sc_set_blocks'>
+            <field name='Layout'>F4 Red</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='40' y='640'>
+    <field name='NAME'>FromCRLtoF4</field>
+    <comment pinned='false' h='60' w='280'>Follow the line from CRL to F4</comment>
+    <statement name='STACK'>
+      <block type='procedures_callnoreturn' inline='true'>
+        <mutation name='Forward'><arg name='speed'></arg><arg name='distanceMm'></arg></mutation>
+        <value name='ARG0'>
+          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+        </value>
+        <value name='ARG1'>
+          <block type='math_number'><field name='NUM'>110</field></block>
+        </value>
+        <next>
+          <block type='procedures_callnoreturn' inline='true'>
+            <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+            <value name='ARG0'>
+              <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+            </value>
+            <value name='ARG1'>
+              <block type='math_number'><field name='NUM'>30</field></block>
+            </value>
+            <next>
+              <block type='procedures_callnoreturn' inline='true'>
+                <mutation name='followLineMultipleJunctions'><arg name='junctionCount'></arg></mutation>
+                <value name='ARG0'>
+                  <block type='math_number'><field name='NUM'>2</field></block>
+                </value>
+                <next>
+                  <block type='procedures_callnoreturn'>
+                    <mutation name='goToJunction'></mutation>
+                    <next>
+                      <block type='procedures_callnoreturn' inline='true'>
+                        <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+                        <value name='ARG0'>
+                          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                        </value>
+                        <value name='ARG1'>
+                          <block type='math_number'><field name='NUM'>53</field></block>
+                        </value>
+                        <next>
+                          <block type='procedures_callnoreturn' inline='true'>
+                            <mutation name='followLineMultipleJunctions'><arg name='junctionCount'></arg></mutation>
+                            <value name='ARG0'>
+                              <block type='math_number'><field name='NUM'>1</field></block>
+                            </value>
+                            <next>
+                              <block type='procedures_callnoreturn'>
+                                <mutation name='goToJunction'></mutation>
+                                <next>
+                                  <block type='procedures_callnoreturn' inline='true'>
+                                    <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+                                    <value name='ARG0'>
+                                      <block type='math_arithmetic'>
+                                        <field name='OP'>MINUS</field>
+                                        <value name='A'>
+                                          <block type='math_number'><field name='NUM'>0</field></block>
+                                        </value>
+                                        <value name='B'>
+                                          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name='ARG1'>
+                                      <block type='math_number'><field name='NUM'>40</field></block>
+                                    </value>
+                                    <next>
+                                      <block type='procedures_callnoreturn' inline='true'>
+                                        <mutation name='Forward'><arg name='speed'></arg><arg name='distanceMm'></arg></mutation>
+                                        <value name='ARG0'>
+                                          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                                        </value>
+                                        <value name='ARG1'>
+                                          <block type='math_number'><field name='NUM'>30</field></block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='40' y='1130'>
+    <field name='NAME'>PickupPollutionF4</field>
+    <comment pinned='false' h='60' w='280'>Grip the red block at F4; it rides along to CRL</comment>
+    <statement name='STACK'>
+      <block type='lb_gripper_move_to'>
+        <value name='angleDeg'>
+          <shadow type='math_number'><field name='NUM'>50</field></shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='40' y='1300'>
+    <field name='NAME'>FromF4toCRL</field>
+    <comment pinned='false' h='60' w='280'>Follow the line from F4 back to CRL</comment>
+    <statement name='STACK'>
+      <block type='procedures_callnoreturn' inline='true'>
+        <mutation name='Backward'><arg name='speed'></arg><arg name='distanceMm'></arg></mutation>
+        <value name='ARG0'>
+          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+        </value>
+        <value name='ARG1'>
+          <block type='math_number'><field name='NUM'>30</field></block>
+        </value>
+        <next>
+          <block type='procedures_callnoreturn' inline='true'>
+            <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+            <value name='ARG0'>
+              <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+            </value>
+            <value name='ARG1'>
+              <block type='math_number'><field name='NUM'>40</field></block>
+            </value>
+            <next>
+              <block type='procedures_callnoreturn' inline='true'>
+                <mutation name='followLineMultipleJunctions'><arg name='junctionCount'></arg></mutation>
+                <value name='ARG0'>
+                  <block type='math_number'><field name='NUM'>1</field></block>
+                </value>
+                <next>
+                  <block type='procedures_callnoreturn'>
+                    <mutation name='goToJunction'></mutation>
+                    <next>
+                      <block type='procedures_callnoreturn' inline='true'>
+                        <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+                        <value name='ARG0'>
+                          <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                        </value>
+                        <value name='ARG1'>
+                          <block type='math_number'><field name='NUM'>53</field></block>
+                        </value>
+                        <next>
+                          <block type='procedures_callnoreturn' inline='true'>
+                            <mutation name='followLineMultipleJunctions'><arg name='junctionCount'></arg></mutation>
+                            <value name='ARG0'>
+                              <block type='math_number'><field name='NUM'>2</field></block>
+                            </value>
+                            <next>
+                              <block type='procedures_callnoreturn'>
+                                <mutation name='goToJunction'></mutation>
+                                <next>
+                                  <block type='procedures_callnoreturn' inline='true'>
+                                    <mutation name='Rotate'><arg name='speed'></arg><arg name='deg'></arg></mutation>
+                                    <value name='ARG0'>
+                                      <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                                    </value>
+                                    <value name='ARG1'>
+                                      <block type='math_number'><field name='NUM'>30</field></block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='40' y='1760'>
+    <field name='NAME'>DropPollutionCRL</field>
+    <comment pinned='false' h='60' w='280'>Drop the red block into CRL</comment>
+    <statement name='STACK'>
+      <block type='lb_gripper_open'></block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='600' y='40'>
+      <mutation>
+        <arg name='speed' varid='v_speed'></arg>
+        <arg name='distanceMm' varid='v_distanceMm'></arg>
+      </mutation>
+      <field name='NAME'>Forward</field>
+      <comment pinned='false' h='60' w='280'>Move forward distanceMm at the given speed, then stop</comment>
+      <statement name='STACK'>
+        <block type='lb_motion_run'>
+          <field name='UnitSpeed'>sps</field>
+          <value name='Left'>
+            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+          </value>
+          <value name='Right'>
+            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+          </value>
+          <next>
+            <block type='lb_motion_wait_distance'>
+              <field name='UnitDistance'>mm</field>
+              <value name='distanceMm'>
+                <block type='variables_get'><field name='VAR' id='v_distanceMm'>distanceMm</field></block>
+              </value>
+              <next>
+                <block type='lb_motion_stop'></block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='600' y='280'>
+    <mutation>
+      <arg name='speed' varid='v_speed'></arg>
+      <arg name='distanceMm' varid='v_distanceMm'></arg>
+    </mutation>
+    <field name='NAME'>Backward</field>
+    <comment pinned='false' h='60' w='280'>Move backward distanceMm at the given speed, then stop</comment>
+    <statement name='STACK'>
+      <block type='lb_motion_run'>
+        <field name='UnitSpeed'>sps</field>
+        <value name='Left'>
+          <block type='math_arithmetic'>
+            <field name='OP'>MINUS</field>
+            <value name='A'>
+              <block type='math_number'><field name='NUM'>0</field></block>
+            </value>
+            <value name='B'>
+              <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+            </value>
+          </block>
+        </value>
+        <value name='Right'>
+          <block type='math_arithmetic'>
+            <field name='OP'>MINUS</field>
+            <value name='A'>
+              <block type='math_number'><field name='NUM'>0</field></block>
+            </value>
+            <value name='B'>
+              <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type='lb_motion_wait_distance'>
+            <field name='UnitDistance'>mm</field>
+            <value name='distanceMm'>
+              <block type='variables_get'><field name='VAR' id='v_distanceMm'>distanceMm</field></block>
+            </value>
+            <next>
+              <block type='lb_motion_stop'></block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type='procedures_defnoreturn' x='600' y='520'>
+      <mutation>
+        <arg name='speed' varid='v_speed'></arg>
+        <arg name='deg' varid='v_deg'></arg>
+      </mutation>
+      <field name='NAME'>Rotate</field>
+      <comment pinned='false' h='60' w='280'>Rotate in place by deg (speed &gt; 0 turns right, speed &lt; 0 turns left), then stop</comment>
+      <statement name='STACK'>
+        <block type='lb_motion_run'>
+          <field name='UnitSpeed'>sps</field>
+          <value name='Left'>
+            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+          </value>
+          <value name='Right'>
+            <block type='math_arithmetic'>
+              <field name='OP'>MINUS</field>
+              <value name='A'>
+                <block type='math_number'><field name='NUM'>0</field></block>
+              </value>
+              <value name='B'>
+                <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type='lb_motion_wait_rotation'>
+              <value name='rotationDeg'>
+                <block type='variables_get'><field name='VAR' id='v_deg'>deg</field></block>
+              </value>
+              <next>
+                <block type='lb_motion_stop'></block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='600' y='770'>
+      <field name='NAME'>goToJunction</field>
+      <comment pinned='false' h='60' w='280'>Follow the line to the next junction and stop just past it</comment>
+      <statement name='STACK'>
+        <block type='procedures_callnoreturn'>
+          <mutation name='followLineUntilJunction'></mutation>
+          <next>
+            <block type='procedures_callnoreturn' inline='true'>
+              <mutation name='followLineDistance'><arg name='distanceMm'></arg></mutation>
+              <value name='ARG0'>
+                <block type='math_number'><field name='NUM'>5</field></block>
+              </value>
+              <next>
+                <block type='lb_motion_stop'></block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='600' y='1000'>
+      <mutation>
+        <arg name='junctionCount' varid='v_junctionCount'></arg>
+      </mutation>
+      <field name='NAME'>followLineMultipleJunctions</field>
+      <comment pinned='false' h='60' w='280'>Follow the line across junctionCount junctions</comment>
+      <statement name='STACK'>
+        <block type='controls_repeat_ext'>
+          <value name='TIMES'>
+            <block type='variables_get'><field name='VAR' id='v_junctionCount'>junctionCount</field></block>
+          </value>
+          <statement name='DO'>
+            <block type='procedures_callnoreturn' inline='true'>
+              <mutation name='followLineDistance'><arg name='distanceMm'></arg></mutation>
+              <value name='ARG0'>
+                <block type='math_number'><field name='NUM'>30</field></block>
+              </value>
+              <next>
+                <block type='procedures_callnoreturn'>
+                  <mutation name='followLineUntilJunction'></mutation>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='600' y='1260'>
+      <field name='NAME'>followLineUntilJunction</field>
+      <comment pinned='false' h='80' w='300'>Follow the line until all 4 sensors see black (junction, lineValue = 15).
+  Read again after each step, like "while LbIRLine.read() != 0b1111" in Python.</comment>
+      <statement name='STACK'>
+        <block type='lb_irline_read'>
+          <next>
+            <block type='controls_whileUntil'>
+              <field name='MODE'>UNTIL</field>
+              <value name='BOOL'>
+                <block type='logic_compare'>
+                  <field name='OP'>EQ</field>
+                  <value name='A'>
+                    <block type='lb_irline_value'></block>
+                  </value>
+                  <value name='B'>
+                    <block type='math_number'><field name='NUM'>15</field></block>
+                  </value>
+                </block>
+              </value>
+              <statement name='DO'>
+                <block type='procedures_callnoreturn'>
+                  <mutation name='runFollowLine'></mutation>
+                  <next>
+                    <block type='lb_irline_read'></block>
+                  </next>
+                </block>
+              </statement>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='600' y='1550'>
+      <mutation>
+        <arg name='distanceMm' varid='v_distanceMm'></arg>
+      </mutation>
+      <field name='NAME'>followLineDistance</field>
+      <comment pinned='false' h='60' w='280'>Follow the line for distanceMm</comment>
+      <statement name='STACK'>
+        <block type='variables_set'>
+          <field name='VAR' id='v_targetMm'>targetMm</field>
+          <value name='VALUE'>
+            <block type='math_arithmetic'>
+              <field name='OP'>ADD</field>
+              <value name='A'>
+                <block type='variables_get'><field name='VAR' id='v_distanceMm'>distanceMm</field></block>
+              </value>
+              <value name='B'>
+                <block type='lb_motion_approx_distance'>
+                  <field name='UnitDistance'>mm</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type='controls_whileUntil'>
+              <field name='MODE'>WHILE</field>
+              <value name='BOOL'>
+                <block type='logic_compare'>
+                  <field name='OP'>LT</field>
+                  <value name='A'>
+                    <block type='lb_motion_approx_distance'>
+                      <field name='UnitDistance'>mm</field>
+                    </block>
+                  </value>
+                  <value name='B'>
+                    <block type='variables_get'><field name='VAR' id='v_targetMm'>targetMm</field></block>
+                  </value>
+                </block>
+              </value>
+              <statement name='DO'>
+                <block type='procedures_callnoreturn'>
+                  <mutation name='runFollowLine'></mutation>
+                </block>
+              </statement>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  <block type='procedures_defnoreturn' x='1180' y='40'>
+      <field name='NAME'>runFollowLine</field>
+      <comment pinned='false' h='100' w='300'>Read the 4 IR line sensors once and steer back onto the line.
+  lineValue: 4 = .o..   2 = ..o.   12 = oo..   3 = ..oo   8 = o...   1 = ...o</comment>
+      <statement name='STACK'>
+        <block type='lb_irline_read'>
+          <next>
+            <block type='variables_set'>
+              <field name='VAR' id='v_lineValue'>lineValue</field>
+              <value name='VALUE'>
+                <block type='lb_irline_value'></block>
+              </value>
+              <next>
+                <block type='lb_irline_display_on_rgb'>
+                  <value name='RGBColor'>
+                    <shadow type='lb_rgb_colour_picker'>
+                      <field name='Color'>#008b8b</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type='controls_if'>
+                      <mutation elseif='5' else='1'></mutation>
+                      <value name='IF0'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>4</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO0'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>DIVIDE</field>
+                              <value name='A'>
+                                <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_number'><field name='NUM'>2</field></block>
+                              </value>
+                            </block>
+                          </value>
+                          <value name='Right'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                        </block>
+                      </statement>
+                      <value name='IF1'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>2</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO1'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                          <value name='Right'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>DIVIDE</field>
+                              <value name='A'>
+                                <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_number'><field name='NUM'>2</field></block>
+                              </value>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <value name='IF2'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>12</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO2'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='math_number'><field name='NUM'>0</field></block>
+                          </value>
+                          <value name='Right'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                        </block>
+                      </statement>
+                      <value name='IF3'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>3</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO3'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                          <value name='Right'>
+                            <block type='math_number'><field name='NUM'>0</field></block>
+                          </value>
+                        </block>
+                      </statement>
+                      <value name='IF4'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>8</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO4'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>MINUS</field>
+                              <value name='A'>
+                                <block type='math_number'><field name='NUM'>0</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_arithmetic'>
+                                  <field name='OP'>DIVIDE</field>
+                                  <value name='A'>
+                                    <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                                  </value>
+                                  <value name='B'>
+                                    <block type='math_number'><field name='NUM'>2</field></block>
+                                  </value>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <value name='Right'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>DIVIDE</field>
+                              <value name='A'>
+                                <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_number'><field name='NUM'>2</field></block>
+                              </value>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <value name='IF5'>
+                        <block type='logic_compare'>
+                          <field name='OP'>EQ</field>
+                          <value name='A'>
+                            <block type='variables_get'><field name='VAR' id='v_lineValue'>lineValue</field></block>
+                          </value>
+                          <value name='B'>
+                            <block type='math_number'><field name='NUM'>1</field></block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name='DO5'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>DIVIDE</field>
+                              <value name='A'>
+                                <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_number'><field name='NUM'>2</field></block>
+                              </value>
+                            </block>
+                          </value>
+                          <value name='Right'>
+                            <block type='math_arithmetic'>
+                              <field name='OP'>MINUS</field>
+                              <value name='A'>
+                                <block type='math_number'><field name='NUM'>0</field></block>
+                              </value>
+                              <value name='B'>
+                                <block type='math_arithmetic'>
+                                  <field name='OP'>DIVIDE</field>
+                                  <value name='A'>
+                                    <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                                  </value>
+                                  <value name='B'>
+                                    <block type='math_number'><field name='NUM'>2</field></block>
+                                  </value>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <statement name='ELSE'>
+                        <block type='lb_motion_run'>
+                          <field name='UnitSpeed'>sps</field>
+                          <value name='Left'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                          <value name='Right'>
+                            <block type='variables_get'><field name='VAR' id='v_speed'>speed</field></block>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+</xml>

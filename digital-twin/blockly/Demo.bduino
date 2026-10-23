@@ -1,0 +1,137 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="leanbot_when_started" x="100" y="50">
+    <next>
+      <block type="lb_mission_begin_digital_twin">
+        <value name="missionId">
+          <block type="text">
+            <field name="TEXT">msNumberGrid</field>
+          </block>
+        </value>
+        <statement name="BODY">
+          <block type="leanbot_section">
+            <field name="commentString">Go straight</field>
+            <statement name="BODY">
+              <block type="lb_motion_run">
+                <value name="Left">
+                  <block type="math_number">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+                <value name="Right">
+                  <block type="math_number">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+                <field name="UnitSpeed">sps</field>
+                <next>
+                  <block type="lb_motion_wait_distance">
+                    <value name="distanceMm">
+                      <block type="math_number">
+                        <field name="NUM">35</field>
+                      </block>
+                    </value>
+                    <field name="UnitDistance">cm</field>
+                    <next>
+                      <block type="lb_motion_stop"/>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="leanbot_section">
+                <field name="commentString">Pick object</field>
+                <statement name="BODY">
+                  <block type="leanbot_delay">
+                    <value name="Delay">
+                      <block type="math_number">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <field name="Unit">seconds</field>
+                    <next>
+                      <block type="lb_gripper_close">
+                        <next>
+                          <block type="leanbot_delay">
+                            <value name="Delay">
+                              <block type="math_number">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <field name="Unit">seconds</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="leanbot_section">
+                    <field name="commentString">Go back</field>
+                    <statement name="BODY">
+                      <block type="lb_motion_run">
+                        <value name="Left">
+                          <block type="math_number">
+                            <field name="NUM">-1000</field>
+                          </block>
+                        </value>
+                        <value name="Right">
+                          <block type="math_number">
+                            <field name="NUM">-1000</field>
+                          </block>
+                        </value>
+                        <field name="UnitSpeed">sps</field>
+                        <next>
+                          <block type="lb_motion_wait_distance">
+                            <value name="distanceMm">
+                              <block type="math_number">
+                                <field name="NUM">-35</field>
+                              </block>
+                            </value>
+                            <field name="UnitDistance">cm</field>
+                            <next>
+                              <block type="lb_motion_stop"/>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="leanbot_section">
+                        <field name="commentString">Drop object</field>
+                        <statement name="BODY">
+                          <block type="leanbot_delay">
+                            <value name="Delay">
+                              <block type="math_number">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <field name="Unit">seconds</field>
+                            <next>
+                              <block type="lb_gripper_open">
+                                <next>
+                                  <block type="leanbot_delay">
+                                    <value name="Delay">
+                                      <block type="math_number">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                    <field name="Unit">seconds</field>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
