@@ -60,7 +60,8 @@ thông tin cá nhân, mật khẩu, token hay thông tin Wi-Fi thật.
 1. Tạo nhánh, thêm/sửa tệp trong một trong ba thư mục, cập nhật README của thư mục đó (tệp gì, bài học nào dùng, cách mở)
    và bảng nguồn ở trên.
 2. Mở pull request. CI (`.github/workflows/check.yml`) chạy `tools/check_samples.py` (cấu trúc, kích thước, mẫu
-   bí mật/thông tin cá nhân) và gitleaks. Cần một người duyệt.
+   bí mật/thông tin cá nhân) và gitleaks. Cần một người duyệt. Máy chủ PNote kiểm tra lại bằng bản kiểm tra riêng nằm
+   trong infra (`gitops/pnote/samples/check_samples.py`) và **không bao giờ chạy mã nào từ repo này**: mọi tệp ở đây chỉ là dữ liệu.
 3. Sau khi merge vào `main`, máy chủ PNote tự đồng bộ trong vòng 30 phút (`sync-samples.sh` trên `.125`, xem
    `infra/gitops/pnote/samples/README.md`). Không cần build lại image hay khởi động lại hub.
 

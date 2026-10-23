@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Validate a pnote-samples tree before it is published to PNote (CI and infra sync-samples.sh both run this).
+"""Validate a pnote-samples tree in CI. The PNote sync never runs code from this repository: it uses its own pinned,
+reviewed copy in infra gitops/pnote/samples/check_samples.py (infra#879). Keep the two in step.
 
 usage: check_samples.py [ROOT]        (ROOT defaults to the repository root; exit 0 = OK, 1 = problems found)
 
